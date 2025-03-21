@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { PrivyProvider } from "@privy-io/react-auth";
+// Replace this with any of the networks listed at https://github.com/wevm/viem/blob/main/src/chains/index.ts
+import {flowMainnet} from 'viem/chains';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -43,6 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <PrivyProvider
         appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}
         config={{
+          supportedChains:[flowMainnet],
           embeddedWallets: {
             createOnLogin: "all-users",
           },
